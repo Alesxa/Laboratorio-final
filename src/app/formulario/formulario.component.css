@@ -1,0 +1,78 @@
+.full-width {
+  width: 100%;
+}
+
+.shipping-card {
+  min-width: 120px;
+  margin: 20px auto;
+}
+
+.mat-radio-button {
+  display: block;
+  margin: 5px 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+table {
+  width: 100%;
+}
+
+.iconoAdmin{
+  font-size: 36px;
+  color: rgb(106, 11, 223);
+
+}
+
+.iconoSocio{
+  font-size: 32px;
+  color: rgb(252, 166, 8);
+
+}
+
+.tituloAdmin{
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 17px;
+
+}
+
+.tituloListadoSocio{
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 17px;
+
+}
+
+.gimnasio
+{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-style: oblique;
+  font-size: 50px;
+  text-shadow: 7px 7px grey;
+  color: rgb(32, 4, 57);
+  text-align: center;
+}
+
+.imagen
+{
+  width: 100%;
+  margin: 10px;
+  margin-top: 20px;
+}

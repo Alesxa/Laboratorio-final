@@ -1,0 +1,153 @@
+<mat-accordion>
+  <mat-expansion-panel #desplegable1>
+    <mat-expansion-panel-header>
+      <mat-panel-title > <mat-icon class="iconoAdmin">manage_accounts</mat-icon><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="tituloAdmin"> Administrador Gimnasio "Rollito veloz" </span>
+      </mat-panel-title>
+
+    </mat-expansion-panel-header>
+
+    <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+      <mat-card class="shipping-card">
+        <mat-card-header>
+          <mat-card-title><mat-icon class="iconoAdmin">rocket_launch</mat-icon><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nuevo socio</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <input matInput placeholder="Nombre" formControlName="nombre">
+                <mat-error *ngIf="addressForm.controls['nombre'].hasError('required')">
+                  El campo nombre es <strong>Obligatorio</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <input matInput placeholder="Apellidos" formControlName="apellidos">
+                <mat-error *ngIf="addressForm.controls['apellidos'].hasError('required')">
+                  El campo apellidos es <strong>Obligatorio</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <input matInput placeholder="Dni" formControlName="dni">
+                <mat-error *ngIf="addressForm.controls['dni'].hasError('required')">
+                  El campo Dni es  <strong>obligatorio</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="fill">
+                <input matInput placeholder="Telefono" formControlName="telefono">
+                <mat-error *ngIf="addressForm.controls['telefono'].hasError('required')">
+                  El campo teléfono es  <strong>obligatorio</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-radio-group formControlName="sexo">
+                <mat-radio-button value="hombre">Hombre</mat-radio-button>
+                <mat-radio-button value="mujer">Mujer</mat-radio-button>
+
+              </mat-radio-group>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit"><mat-icon>person_add</mat-icon> Guardar </button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon class="iconoSocio">face</mat-icon> <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="tituloListadoSocio"> Lista de socios </span>
+      </mat-panel-title>
+
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header> <table mat-table #tablaSocios [dataSource]="Socios" class="mat-elevation-z8">
+
+
+      <ng-container matColumnDef="socio">
+        <th mat-header-cell *matHeaderCellDef> No.Socio </th>
+        <td mat-cell *matCellDef="let element"> {{element.Socio}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.Nombre}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="apellidos">
+        <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+        <td mat-cell *matCellDef="let element"> {{element.Apellidos}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="dni">
+        <th mat-header-cell *matHeaderCellDef> DNI </th>
+        <td mat-cell *matCellDef="let element"> {{element.DNI}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="telefono">
+        <th mat-header-cell *matHeaderCellDef><mat-icon>phone</mat-icon><mat-icon>smartphone</mat-icon> </th>
+        <td mat-cell *matCellDef="let element"> {{element.Telefono}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sexo">
+        <th mat-header-cell *matHeaderCellDef> <mat-icon>female</mat-icon><mat-icon>male</mat-icon></th>
+        <td mat-cell *matCellDef="let element"> {{element.Sexo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="botones">
+        <th mat-header-cell *matHeaderCellDef></th>
+
+        <td mat-cell *matCellDef="let element">
+
+          <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" matTooltip="Eliminar" (click)="eliminarSocio(element.Socio)">
+          <mat-icon>delete</mat-icon></button>
+          <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" matTooltip="Modificar" (click)="modificarSocio(element.Socio)">
+            <mat-icon>settings</mat-icon></button>
+
+       </td>
+      </ng-container>
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+<h1 class="gimnasio"> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GIMNASIO ROLLITO VELOZ</h1>
+
+
+<img class="imagen" src="https://www.delmundo.top/wp-content/uploads/2020/12/mejores-gimnasios.jpg">
+
+
+<img class="imagen" src="https://as.com/deporteyvida/imagenes/2017/10/23/portada/1508764119_386898_1508766616_sumario_grande.jpg">
+
+<h5>*Para nuevas inscripciones solicitarlo en recepción</h5>
+<h6> **Tras la prueba gratuita de 7 días, sino ha sido dado de baja expresamente, se renovará automáticamente la suscripción anual, 120e/mes</h6>
+
+
+
+<!--Descargo de responsabilidad: Ninguna de las imagenes me pertenecen y fueron usadas con fines meramente academicos, sin ningún tipo de interés comercial-->
